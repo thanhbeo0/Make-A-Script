@@ -1,8 +1,18 @@
 local m = {}
 
-local cache = {}
-cache.Funcrandom = loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhbeo0/Make-A-Script/refs/heads/main/Scripts/Lua/RandomString.lua"))
+math.randomseed(tick())
 
+local cache = {}
+local chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+function cache.Funcrandom(length)
+  local str = ""
+  for i = 1, length do
+      local randIndex = math.random(1, #chars)
+      str = str .. chars:sub(randIndex, randIndex)
+  end
+  return str
+end
 
 cache.Player = game:GetService("Players").LocalPlayer
 cache.PlayerGui = cache.Player:WaitForChild("PlayerGui")
