@@ -25,18 +25,20 @@ function m.InitGui(c)
   local win = Instance.new("Frame")
   win.Parent = cache.ScreenGui
   
-  win.Size = UDim2.new(0, 300, 0, 250)
+  win.Size = UDim2.new(0, 400, 0, 250)
   win.Position = UDim2.new(0.5,0,0.5,0)
   win.AnchorPoint = Vector2.new(0.5,0.5)
-  win.BackgroundColor3 = Color3.fromRGB(150,150,150)
+  win.BackgroundColor3 = Color3.fromRGB(160,160,160)
   win.BackgroundTransparency = 0.4
   
   cache.Window = win
 end
 
 function m.DestroyWindow()
-  cache.Window:Destroy()
-  print(cache.Funcrandom(120))
+  if cache.Window ~= nil then
+    cache.Window:Destroy()
+    cache.Window = nil
+  end
 end
 
 return m
