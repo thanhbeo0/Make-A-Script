@@ -55,7 +55,7 @@ function m.InitGui(c)
 
   local ttitle= Instance.new("TextLabel")
   ttitle.Parent = win
-  ttitle.Position = UDim2.new(0.5,0,0,0)
+  ttitle.Position = UDim2.new(0.5,0,0,36)
   ttitle.AnchorPoint = Vector2.new(0.5,0)
   ttitle.BackgroundTransparency = 1
   ttitle.TextSize = 36
