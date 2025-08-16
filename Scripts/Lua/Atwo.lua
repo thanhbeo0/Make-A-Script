@@ -53,6 +53,13 @@ function m.InitGui(c)
   
   win.Visible = false
 
+  local ttitle= Instance.new("TextLabel")
+  ttitle.Parent = win
+  ttitle.Position = UDim2.new(0.5,0,0,0)
+  ttitle.AnchorPoint = Vector2.new(0.5,0)
+  ttitle.BackgroundTransparency = 1
+  ttitle.TextSize = 36
+
   local ButtonOpen = Instance.new("ImageButton")
   ButtonOpen.Image = idimage
   ButtonOpen.Parent = cache.ScreenGui
@@ -60,6 +67,9 @@ function m.InitGui(c)
   ButtonOpen.Position = UDim2.new(0,0,0.5,0)
   ButtonOpen.AnchorPoint = Vector2.new(0,0.5)
   ButtonOpen.BackgroundColor3 = Color3.fromRGB(165,165,165)
+
+  ButtonOpen.BorderSizePixel = 1
+  ButtonOpen.BorderColor3 = Color3.fromRGB(175,175,175)
   
   local uicorner = Instance.new("UICorner")
   uicorner.Parent = ButtonOpen
