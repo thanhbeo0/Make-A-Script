@@ -6,3 +6,5 @@ Made while I was studying.
 
 - Info
 **Release Date**: Saturday, August 16, 2025
+
+- `Scripts/Lua/Atwo.lua`: Interface creation function.
