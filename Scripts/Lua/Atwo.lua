@@ -49,12 +49,13 @@ function m.InitGui(c)
   if (idimage == nil) then
     ButtonOpen = Instance.new("TextButton")
     ButtonOpen.Text = title
+    ButtonOpen.TextScaled = true
   else
     ButtonOpen = Instance.new("ImageButton")
     ButtonOpen.Image = ("rbxassetid://"..idimage)
   end
   ButtonOpen.Parent = cache.ScreenGui
-  ButtonOpen.Size = UDim2.new(0,(idimage == nil) and 50 or 50+(0.5*(#title)),0,25)
+  ButtonOpen.Size = UDim2.new(0,50,0,25)
   ButtonOpen.Position = UDim2.new(0,0,0.5,0)
   ButtonOpen.AnchorPoint = Vector2.new(0,0.5)
   ButtonOpen.BackgroundColor3 = Color3.fromRGB(165,165,165)
