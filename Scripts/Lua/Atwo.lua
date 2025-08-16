@@ -27,7 +27,7 @@ cache.ScreenGui.Name = "Gui" .. cache.Funcrandom(20)
 
 function m.InitGui(c)
   local title = c.title or nil
-  local idimage = c.IDImage or "rbxassetid://6340513847"
+  local idimage = c.IDImage or "rbxassetid://79202919691677"
   local shape = c.Shape or "square"
 
   local sound = Instance.new("Sound")
@@ -52,23 +52,6 @@ function m.InitGui(c)
   win.BorderColor3 = Color3.fromRGB(0,0,0)
   
   win.Visible = false
-
-  local TopFrame = Instance.new("ScrollingFrame")
-  TopFrame.Parent = win
-  TopFrame.Position = UDim2.new(0.2,0,0,0)
-  TopFrame.AnchorPoint = Vector2.new(0.2,0.2)
-  TopFrame.Size = UDim2.new(0.8,0,0.2,0)
-  TopFrame.BackgroundColor3 = Color3.fromRGB(255,255,255)
-  TopFrame.BackgroundTransparency = 0.4
-
-  local ttitle = Instance.new("TextLabel")
-  ttitle.Parent = win
-  ttitle.BackgroundTransparency = 1 
-  ttitle.Font = Enum.Font.GothamBold
-  ttitle.TextSize = 20
-  ttitle.Position = UDim2.new(0.5, 0, 0, 0)
-  ttitle.AnchorPoint = Vector2.new(0.5,0)
-  ttitle.Text = title
 
   local ButtonOpen = Instance.new("ImageButton")
   ButtonOpen.Image = idimage
