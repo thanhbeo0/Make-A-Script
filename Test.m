@@ -7,7 +7,6 @@ import package.Interface.*
 def m = new Module()
 
 def Gui = NULL;
-Gu
 
 def m.addMember(Init:bool(){
   wait Interface, Element;
