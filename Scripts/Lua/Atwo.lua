@@ -55,10 +55,10 @@ function m.InitGui(c)
 
   local ttitle= Instance.new("TextLabel")
   ttitle.Parent = win
-  ttitle.Position = UDim2.new(0.5,0,0,36)
+  ttitle.Position = UDim2.new(0.5,0,0,20)
   ttitle.AnchorPoint = Vector2.new(0.5,0)
   ttitle.BackgroundTransparency = 1
-  ttitle.TextSize = 36
+  ttitle.TextSize = 20
   ttitle.Text = title
 
   local ButtonOpen = Instance.new("ImageButton")
