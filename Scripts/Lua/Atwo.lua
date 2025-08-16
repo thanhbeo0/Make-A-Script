@@ -56,19 +56,20 @@ function m.InitGui(c)
 
   local TopFrame = Instance.new("ScrollingFrame")
   TopFrame.Parent = win
-  TopFrame.Position = UDim2.new(0.2,0,0.2,0)
+  TopFrame.Position = UDim2.new(0.2,0,0,0)
   TopFrame.AnchorPoint = Vector2.new(0.2,0.2)
   TopFrame.Size = UDim2.new(0.8,0,0.2,0)
   TopFrame.BackgroundColor3 = Color3.fromRGB(255,255,255)
   TopFrame.BackgroundTransparency = 0.4
 
-  local title = Instance.new("TextLabel")
-  title.Parent = win
-  title.BackgroundTransparency = 1 
-  title.Font = Enum.Font.GothamBold
-  title.TextSize = 20
-  title.Position = UDim2.new(0.5, 0, 0, 0)
-  title.AnchorPoint = Vector2.new(0.5,0)
+  local ttitle = Instance.new("TextLabel")
+  ttitle.Parent = win
+  ttitle.BackgroundTransparency = 1 
+  ttitle.Font = Enum.Font.GothamBold
+  ttitle.TextSize = 20
+  ttitle.Position = UDim2.new(0.5, 0, 0, 0)
+  ttitle.AnchorPoint = Vector2.new(0.5,0)
+  ttitle.Text = title
 
   local ButtonOpen = Instance.new("ImageButton")
   ButtonOpen.Image = idimage
