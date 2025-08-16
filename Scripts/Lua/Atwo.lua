@@ -27,8 +27,17 @@ cache.ScreenGui.Name = "Gui" .. cache.Funcrandom(20)
 
 function m.InitGui(c)
   local title = c.title or nil
-  local idimage = c.IDImage or nil
-  local shape = string.lower(c.Shape) or "square"
+  local idimage = c.IDImage or "rbx://6340513847"
+  local shape = c.Shape or "square"
+
+  local sound = Instance.new("Sound")
+  sound.SoundId = "rbxassetid://115916891254154"
+  sound.Volume = 1
+  sound:Play()
+  sound.Parent = cache.ScreenGui
+  sound.Ended:Connect(function()
+    sound:Destroy()
+  end)
 
   local win = Instance.new("Frame")
   win.Parent = cache.ScreenGui
@@ -39,23 +48,32 @@ function m.InitGui(c)
   win.BackgroundColor3 = Color3.fromRGB(160,160,160)
   win.BackgroundTransparency = 0.4
   
-  win.BorderSizePixel = 2.5
+  win.BorderSizePixel = 4
 
   win.BorderColor3 = Color3.fromRGB(0,0,0)
   
   win.Visible = false
 
-  local ButtonOpen
-  if (idimage == nil) then
-    ButtonOpen = Instance.new("TextButton")
-    ButtonOpen.Text = title
-    ButtonOpen.TextScaled = true
-  else
-    ButtonOpen = Instance.new("ImageButton")
-    ButtonOpen.Image = ("rbxassetid://"..idimage)
-  end
+  local TopFrame = Instance.new("ScrollingFrame")
+  TopFrame.Parent = win
+  TopFrame.Position = UDim2.new(0.2,0,0.2,0)
+  TopFrame.AnchorPoint = Vector2.new(0.2,0.2)
+  TopFrame.Size = UDim2.new(0.8,0,0.2,0)
+  TopFrame.BackgroundColor3 = Color3.fromRGB(255,255,255)
+  TopFrame.BackgroundTransparency = 0.4
+
+  local title = Instance.new("TextLabel")
+  title.Parent = win
+  title.BackgroundTransparency = 1 
+  title.Font = Enum.Font.GothamBold
+  title.TextSize = 20
+  title.Position = UDim2.new(0.5, 0, 0, 0)
+  title.AnchorPoint = Vector2.new(0.5,0)
+
+  local ButtonOpen = Instance.new("ImageButton")
+  ButtonOpen.Image = idimage
   ButtonOpen.Parent = cache.ScreenGui
-  ButtonOpen.Size = UDim2.new(0,60,0,60)
+  ButtonOpen.Size = UDim2.new(0,50,0,25)
   ButtonOpen.Position = UDim2.new(0,0,0.5,0)
   ButtonOpen.AnchorPoint = Vector2.new(0,0.5)
   ButtonOpen.BackgroundColor3 = Color3.fromRGB(165,165,165)
@@ -67,12 +85,8 @@ function m.InitGui(c)
   elseif shape == "square" then
     uicorner.CornerRadius = UDim.new(0,0)
   elseif shape == "half" then
-    uicorner.CornerRadius = UDim.new(0,10)
+    uicorner.CornerRadius = UDim.new(0,25)
   end
-  local uistroke = Instance.new("UIStroke")
-  uistroke.Parent = ButtonOpen
-  uistroke.Color = Color3.fromRGB(165,165,165)
-  uistroke.Thickness = 1.5
 
   ButtonOpen.Activated:Connect(function()
     win.Visible = not win.Visible
