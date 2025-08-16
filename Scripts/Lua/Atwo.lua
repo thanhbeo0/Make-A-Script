@@ -39,7 +39,7 @@ function m.InitGui(c)
   win.BackgroundColor3 = Color3.fromRGB(160,160,160)
   win.BackgroundTransparency = 0.4
   
-  win.BorderSizePixel = 4
+  win.BorderSizePixel = 2.5
 
   win.BorderColor3 = Color3.fromRGB(0,0,0)
   
@@ -67,8 +67,12 @@ function m.InitGui(c)
   elseif shape == "square" then
     uicorner.CornerRadius = UDim.new(0,0)
   elseif shape == "half" then
-    uicorner.CornerRadius = UDim.new(0,25)
+    uicorner.CornerRadius = UDim.new(0,10)
   end
+  local uistroke = Instance.new("UIStroke")
+  uistroke.Parent = ButtonOpen
+  uistroke.Color = Color3.fromRGB(165,165,165)
+  uistroke.Thickness = 1.5
 
   ButtonOpen.Activated:Connect(function()
     win.Visible = not win.Visible
