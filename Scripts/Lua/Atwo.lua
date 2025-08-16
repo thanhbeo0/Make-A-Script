@@ -18,6 +18,7 @@ cache.Player = game:GetService("Players").LocalPlayer
 
 cache.candestroy = false
 cache.UserInputService = game:GetService("UserInputService")
+cache.RunService = game:GetService("RunService")
 
 cache.PlayerGui = cache.Player:WaitForChild("PlayerGui")
 cache.ScreenGui = Instance.new("ScreenGui")
@@ -25,7 +26,7 @@ cache.ScreenGui.Parent = cache.PlayerGui
 cache.ScreenGui.Name = "Gui" .. cache.Funcrandom(20)
 
 function m.InitGui(c)
-  local title = c.title
+  --local title = c.title
   local win = Instance.new("Frame")
   win.Parent = cache.ScreenGui
   
@@ -53,6 +54,31 @@ function m.InitGui(c)
     ButtonOpen.Text = (ButtonOpen.Text == "OPEN") and "CLOSE" or "OPEN"
     win.Visible = not win.Visible
   end)
+
+  local ButtonOpenDragging = false
+  local StartPos
+  local InputPos
+  
+  ButtonOpen.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
+      ButtonOpenDragging = true
+      InputPos = input.Position
+      StartPos = ButtonOpen.Position
+      input.Changed:Connect(function()
+        if input.UserInputState == Enum.UserInputState.End then
+          ButtonOpenDragging = false
+        end
+      end)
+    end
+  end)
+
+  ButtonOpen.InputChanged:Connect(function(input)
+    if (ButtonOpenDragging and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+      local delta = input.Position - InputPos
+      ButtonOpen.Position = UDim2.new(StartPos.X.Scale, StartPos.X.Offset + delta.X, StartPos.Y.Scale, StartPos.Y.Offset + delta.Y)
+    end
+  end)
+
 
   cache.Window = win
   cache.ButtonOpen = ButtonOpen
