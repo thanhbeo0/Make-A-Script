@@ -59,6 +59,7 @@ function m.InitGui(c)
   ttitle.AnchorPoint = Vector2.new(0.5,0)
   ttitle.BackgroundTransparency = 1
   ttitle.TextSize = 36
+  ttitle.Text = title
 
   local ButtonOpen = Instance.new("ImageButton")
   ButtonOpen.Image = idimage
