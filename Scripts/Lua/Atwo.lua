@@ -28,7 +28,7 @@ cache.ScreenGui.Name = "Gui" .. cache.Funcrandom(20)
 function m.InitGui(c)
   local title = c.title or nil
   local idimage = c.IDImage or nil
-  local shape = c.Shape or "square"
+  local shape = string.lower(c.Shape) or "square"
 
   local win = Instance.new("Frame")
   win.Parent = cache.ScreenGui
@@ -59,11 +59,16 @@ function m.InitGui(c)
   ButtonOpen.Position = UDim2.new(0,0,0.5,0)
   ButtonOpen.AnchorPoint = Vector2.new(0,0.5)
   ButtonOpen.BackgroundColor3 = Color3.fromRGB(165,165,165)
+  
+  local uicorner = Instance.new("UICorner")
+  uicorner.Parent = ButtonOpen
   if shape == "round" then
-    local uicorner = Instance.new("UICorner")
-    uicorner.Parent = ButtonOpen
     uicorner.CornerRadius = UDim.new(0,50)
-  else
+  elseif shape == "square" then
+    uicorner.CornerRadius = UDim.new(0,0)
+  elseif shape == "half" then
+    uicorner.CornerRadius = UDim2.new(0,25)
+  end
 
   ButtonOpen.Activated:Connect(function()
     win.Visible = not win.Visible
