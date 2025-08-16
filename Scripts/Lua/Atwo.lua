@@ -26,7 +26,10 @@ cache.ScreenGui.Parent = cache.PlayerGui
 cache.ScreenGui.Name = "Gui" .. cache.Funcrandom(20)
 
 function m.InitGui(c)
-  --local title = c.title
+  local title = c.title or nil
+  local idimage = c.IDImage or nil
+  local shape = c.Shape or "square"
+
   local win = Instance.new("Frame")
   win.Parent = cache.ScreenGui
   
@@ -42,16 +45,26 @@ function m.InitGui(c)
   
   win.Visible = false
 
-  local ButtonOpen = Instance.new("TextButton")
+  local ButtonOpen
+  if (idimage == nil) then
+    ButtonOpen = Instance.new("TextButton")
+    ButtonOpen.Text = title
+  else
+    ButtonOpen = Instance.new("ImageButton")
+    ButtonOpen.Image = ("rbxassetid://"..idimage)
+  end
   ButtonOpen.Parent = cache.ScreenGui
-  ButtonOpen.Size = UDim2.new(0,50,0,25)
+  ButtonOpen.Size = UDim2.new(0,(idimage == nil) and 50 or 50+(0.5*(#title)),0,25)
   ButtonOpen.Position = UDim2.new(0,0,0.5,0)
   ButtonOpen.AnchorPoint = Vector2.new(0,0.5)
   ButtonOpen.BackgroundColor3 = Color3.fromRGB(165,165,165)
-  ButtonOpen.Text = "OPEN"
+  if shape == "round" then
+    local uicorner = Instance.new("UICorner")
+    uicorner.Parent = ButtonOpen
+    uicorner.CornerRadius = UDim.new(0,50)
+  else
 
   ButtonOpen.Activated:Connect(function()
-    ButtonOpen.Text = (ButtonOpen.Text == "OPEN") and "CLOSE" or "OPEN"
     win.Visible = not win.Visible
   end)
 
