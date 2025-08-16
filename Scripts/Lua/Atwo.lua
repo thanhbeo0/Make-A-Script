@@ -27,13 +27,12 @@ cache.ScreenGui.Name = "Gui" .. cache.Funcrandom(20)
 
 function m.InitGui(c)
   local title = c.title or nil
-  local idimage = c.IDImage or "rbx://6340513847"
+  local idimage = c.IDImage or "rbxassetid://6340513847"
   local shape = c.Shape or "square"
 
   local sound = Instance.new("Sound")
   sound.SoundId = "rbxassetid://115916891254154"
   sound.Volume = 1
-  sound:Play()
   sound.Parent = cache.ScreenGui
   sound.Ended:Connect(function()
     sound:Destroy()
@@ -48,7 +47,7 @@ function m.InitGui(c)
   win.BackgroundColor3 = Color3.fromRGB(160,160,160)
   win.BackgroundTransparency = 0.4
   
-  win.BorderSizePixel = 4
+  win.BorderSizePixel = 2
 
   win.BorderColor3 = Color3.fromRGB(0,0,0)
   
@@ -74,7 +73,7 @@ function m.InitGui(c)
   local ButtonOpen = Instance.new("ImageButton")
   ButtonOpen.Image = idimage
   ButtonOpen.Parent = cache.ScreenGui
-  ButtonOpen.Size = UDim2.new(0,50,0,25)
+  ButtonOpen.Size = UDim2.new(0,50,0,50)
   ButtonOpen.Position = UDim2.new(0,0,0.5,0)
   ButtonOpen.AnchorPoint = Vector2.new(0,0.5)
   ButtonOpen.BackgroundColor3 = Color3.fromRGB(165,165,165)
@@ -124,6 +123,7 @@ function m.InitGui(c)
   cache.ButtonOpen = ButtonOpen
 
   cache.candestroy = true
+  sound:Play()
 end
 
 function m.Destroy()
