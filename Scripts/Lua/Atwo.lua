@@ -67,7 +67,7 @@ function m.InitGui(c)
   elseif shape == "square" then
     uicorner.CornerRadius = UDim.new(0,0)
   elseif shape == "half" then
-    uicorner.CornerRadius = UDim2.new(0,25)
+    uicorner.CornerRadius = UDim.new(0,25)
   end
 
   ButtonOpen.Activated:Connect(function()
