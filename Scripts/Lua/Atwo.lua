@@ -58,27 +58,29 @@ function m.InitGui(c)
   local ButtonOpenDragging = false
   local StartPos
   local InputPos
+  local DragInput
   
   ButtonOpen.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
       ButtonOpenDragging = true
+      DragInput = input
       InputPos = input.Position
       StartPos = ButtonOpen.Position
       input.Changed:Connect(function()
         if input.UserInputState == Enum.UserInputState.End then
           ButtonOpenDragging = false
+          DragInput = nil
         end
       end)
     end
   end)
 
-  ButtonOpen.InputChanged:Connect(function(input)
-    if (ButtonOpenDragging and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-      local delta = input.Position - InputPos
-      ButtonOpen.Position = UDim2.new(StartPos.X.Scale, StartPos.X.Offset + delta.X, StartPos.Y.Scale, StartPos.Y.Offset + delta.Y)
+  cache.RunService.RenderStepped:Connect(function()
+    if ButtonOpenDragging and DragInput then
+      local delta = DragInput.Position - InputPos
+      ButtonOpen.Position = UDim2.new(StartPos.X.Scale, StartPos.X.Offset + delta.X,StartPos.Y.Scale, StartPos.Y.Offset + delta.Y)
     end
   end)
-
 
   cache.Window = win
   cache.ButtonOpen = ButtonOpen
